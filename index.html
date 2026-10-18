@@ -69,14 +69,14 @@ h2 a{font-size:12px;color:var(--g);font-weight:700;cursor:pointer}
 .total b{display:block;font-size:26px;font-weight:800}
 .bars{display:flex;gap:4px;align-items:flex-end;height:36px}.bars i{width:8px;background:var(--g);border-radius:3px}
 .fab{position:absolute;right:16px;bottom:94px;background:var(--g);color:#fff;font-weight:800;border-radius:99px;padding:13px 20px;box-shadow:0 6px 16px rgba(0,0,0,.25);font-size:14px}
-nav{position:absolute;left:16px;right:16px;bottom:14px;z-index:4;display:flex;gap:2px;background:#000;border-radius:32px;padding:6px;box-shadow:0 10px 26px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.08)}
-nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;font-weight:600;color:#9aa5a2;padding:7px 0;border-radius:26px;transition:background .2s,color .2s}
+nav{position:absolute;left:16px;right:16px;bottom:14px;z-index:4;display:flex;gap:2px;background:linear-gradient(135deg,color-mix(in srgb,var(--card) 48%,transparent),color-mix(in srgb,var(--card) 18%,transparent));-webkit-backdrop-filter:blur(22px) saturate(1.8);backdrop-filter:blur(22px) saturate(1.8);border:1px solid color-mix(in srgb,var(--ink) 12%,transparent);border-radius:32px;padding:6px;box-shadow:0 12px 30px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.05)}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;font-weight:600;color:color-mix(in srgb,var(--ink) 65%,transparent);padding:7px 0;border-radius:26px;transition:background .2s,color .2s}
 nav button span{font-size:19px;filter:grayscale(1);opacity:.75}
-nav button.on{background:var(--g);color:#fff;font-weight:800}nav button.on span{filter:none;opacity:1}
+nav button.on{background:color-mix(in srgb,var(--g) 88%,transparent);color:#fff;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 3px 10px rgba(31,122,85,.35)}nav button.on span{filter:none;opacity:1}
 label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}
 .in{width:100%;border:1px solid var(--ln);border-radius:12px;padding:12px;font:inherit;font-size:14px;background:var(--card);color:var(--ink)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ppl{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ppl{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
 .pp{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px;border:1px solid var(--ln);border-radius:12px;font-size:12px;font-weight:700}
 .pp.on{background:var(--gl);border-color:var(--g)}
 .av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:24px}
@@ -109,7 +109,7 @@ label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}
 <header class="site"><h1>Roomie - protótipo</h1><p>Atividade Avaliativa 3 - Usabilidade, desenvolvimento web, mobile e jogos</p></header>
 <main class="stage"><div class="dev"><div id="app"></div><i class="isl"></i><div class="sb"><b>9:41</b><span><svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg><b>5G</b><svg width="27" height="13" viewBox="0 0 27 13" aria-hidden="true"><rect x=".5" y=".5" width="22" height="12" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="19" height="9" rx="2" fill="currentColor"/><rect x="24" y="4" width="2" height="5" rx="1" fill="currentColor" opacity=".5"/></svg></span></div><i class="hb"></i><i class="bt" style="top:130px;height:30px"></i><i class="bt" style="top:200px;height:58px"></i><i class="bt" style="top:272px;height:58px"></i><i class="bt r" style="top:240px;height:96px"></i><i class="bt r" style="top:400px;height:64px"></i></div></main>
 <script>
-const P={'João':['#d7e6ff','🧔🏽'],Lucas:['#ffe0c2','👦🏻'],Pedro:['#ffd9c9','👨🏼'],Gabi:['#f6d6e4','👩🏻']};
+const P={'Você':['#d9f2e3','🎮'],'João':['#d7e6ff','🧔🏽'],Lucas:['#ffe0c2','👦🏻'],Pedro:['#ffd9c9','👨🏼'],Gabi:['#f6d6e4','👩🏻']};
 const NAMES=Object.keys(P);
 const MES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const S={scr:'home',month:'2024-06',ef:'Todas',tf:'Todas',sheet:false,
@@ -118,6 +118,10 @@ tk:[{t:'Limpar cozinha',o:'Você',w:'Hoje, 10/06',late:1,done:0},{t:'Tirar lixo'
 li:[{t:'Papel higiênico',by:'João',c:1},{t:'Café',by:'Gabi',c:1},{t:'Detergente',by:'Lucas',c:0},{t:'Sabão',by:'Pedro',c:0},{t:'Sacos de lixo',by:'você',c:1}],
 nx:{d:'',v:'',by:'',dt:'2024-06-10',sel:{'João':1,Lucas:1}},
 house:'República do Centro',editH:false,addr:'Centro, São Paulo - SP',tag:'Nossa casa, nossas regras',
+adm:{'Você':1,'João':1},mng:0,
+xp:{'Você':140,'João':220,Lucas:90,Pedro:160,Gabi:180},rent:{v:2400,paid:0,day:10},
+mt:[{t:'Torneira da cozinha pingando',by:'Gabi',s:0},{t:'Lâmpada do corredor queimada',by:'Lucas',s:1}],
+msgs:[{a:'Proprietário',t:'Bom dia! A vistoria anual será dia 20/06, às 14h.',h:'08:30'},{a:'Gabi',t:'Combinado, estaremos em casa.',h:'09:02'}],
 rules:['Silêncio depois das 22h','Louça lavada no mesmo dia','Avisar antes de trazer visitas','Dividir as contas até o dia 10','Cada um limpa a bagunça que fez']};
 const $=s=>document.querySelector(s);
 const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
@@ -133,7 +137,9 @@ function home(){
  const nx=S.tk.filter(t=>!t.done).slice(0,3);
  const ics=['💲','🗑️','🧼'];
  return `<div class="top"><span class="logo">Roomie</span><span style="flex:1"></span><button data-a="toast" data-v="Sem notificações novas 🔔" aria-label="Notificações" style="font-size:20px">🔔</button></div>
- <div class="house"><div class="big">🏡</div><div><b>${esc(S.house)} ▾</b><br><small style="color:var(--mut)">4 moradores</small></div></div>
+ <div class="house"><div class="big">🏡</div><div><b>${esc(S.house)} ▾</b><br><small style="color:var(--mut)">${NAMES.length} moradores</small></div></div>
+ <button class='row' data-a='go' data-v='ach' style='margin-top:12px'><div class='ic ok'>🎮</div><div class='t'><b>Nível ${lv(S.xp['Você'])} · ${TIT[Math.min(4,lv(S.xp['Você'])-1)]}</b><div class='prog'><i style='width:${S.xp['Você']%100}%'></i></div><small>${S.xp['Você']%100}/100 XP para o próximo nível</small></div>›</button>
+ <button class='row' data-a='go' data-v='msgs'><div class='ic bl'>💬</div><div class='t'><b>Mural de avisos</b><small>${esc(S.msgs[S.msgs.length-1].a)}: ${esc(S.msgs[S.msgs.length-1].t.slice(0,32))}…</small></div>›</button>
  <div class="stats">
   <div class="stat ok"><span>Despesas do mês<b>${brl(tot)}</b></span><span style="font-size:20px">💲</span></div>
   <div class="stat bl"><span>Seu saldo<b>R$ 15,00</b></span><span style="font-size:20px">🐷</span></div>
@@ -186,32 +192,63 @@ function list(){
 function rules(){
  return `<div class="top"><button data-a="go" data-v="house" aria-label="Voltar" style="font-size:22px">‹</button><h1>Regras da casa</h1></div>
  <small style="color:var(--mut)">Toque em uma regra para editar o texto.</small><div style="height:10px"></div>
- ${S.rules.map((r,i)=>`<div class="li"><div class="ic ok">${i+1}</div><input class="in rl" style="flex:1;min-width:0" data-i="${i}" value="${esc(r)}" aria-label="Regra ${i+1}"><button data-a="rmrl" data-i="${i}" aria-label="Remover regra" style="font-size:18px">🗑️</button></div>`).join('')||'<div class="empty">Nenhuma regra ainda. Adicione a primeira abaixo.</div>'}
+ ${S.rules.map((r,i)=>`<div class="li"><div class="ic ok">${i+1}</div><input class="in rl" style="flex:1;min-width:0" data-i="${i}" value="${esc(r)}" aria-label="Regra ${i+1}" ${isAdm()?'':'readonly'}><button data-a="rmrl" data-i="${i}" aria-label="Remover regra" style="font-size:18px">🗑️</button></div>`).join('')||'<div class="empty">Nenhuma regra ainda. Adicione a primeira abaixo.</div>'}
  <div class="add"><input class="in" id="rin" placeholder="Nova regra..."><button data-a="addrl" aria-label="Adicionar regra">+</button></div>`;
 }
 function house(){
  return `<h1>Casa</h1>
  <div class="house" style="flex-direction:column;align-items:flex-start"><div class="big" style="font-size:54px">🏡</div><div style="width:100%" class="${S.editH?'ed':''}">${S.editH?`<input class="in" id="hn" value="${esc(S.house)}" maxlength="40" aria-label="Nome da casa" style="margin-bottom:8px"><input class="in" id="ha" value="${esc(S.addr)}" maxlength="70" aria-label="Endereço da casa" placeholder="Endereço (ex.: Centro, São Paulo - SP)" style="margin-bottom:8px"><input class="in" id="ht" value="${esc(S.tag)}" maxlength="50" aria-label="Descrição da casa" placeholder="Descrição da casa" style="margin-bottom:8px"><div style="display:flex;gap:6px"><button class="chip g" data-a="savehn">Salvar</button><button class="chip r" data-a="cancelhn">Cancelar</button></div>`:`<b style="font-size:18px">${esc(S.house)}</b> <button data-a="edithn" aria-label="Renomear casa">✏️</button>`}<br><small style="color:var(--mut)">📍 ${esc(S.addr)}</small><br><small style="color:var(--g);font-weight:700">${esc(S.tag)} 💚</small></div></div>
- <h2>Moradores (4) <a data-a="toast" data-v="Gerenciar moradores: em breve">Gerenciar</a></h2>
- <div class="avs">${NAMES.map(x=>`<div>${av(x,52)}${x}</div>`).join('')}</div>
- <div class="kp"><div class="stat ok"><b>4</b>Moradores</div><div class="stat bl"><b>3</b>Contas recorrentes</div><div class="stat or"><b>${S.rules.length}</b>Regras da casa</div></div>
+ <h2>Moradores (${NAMES.length}) <a data-a='mng'>${S.mng?'Concluir':'Gerenciar'}</a></h2>
+ <div class='row'><div class='av' style='background:#fde8c8;width:40px;height:40px;font-size:20px'>🔑</div><div class='t'><b>Roberto Lima</b><small>Proprietário do imóvel</small></div><span class='chip p'>Proprietário</span><button data-a='go' data-v='msgs' aria-label='Enviar mensagem ao proprietário' style='font-size:18px'>💬</button></div>
+ ${NAMES.map(x=>`<div class='row'>${av(x,40)}<div class='t'><b>${x}</b><small>${S.adm[x]?'Administrador':'Morador'}</small></div>${S.adm[x]?`<span class='chip g'>Admin</span>`:''}${S.mng?`<button class='chip ${S.adm[x]?'r':'g'}' data-a='adm' data-v='${x}'>${S.adm[x]?'Remover admin':'Tornar admin'}</button>`:''}</div>`).join('')}
+ 
+ <div class="kp"><div class="stat ok"><b>${NAMES.length}</b>Moradores</div><div class="stat bl"><b>3</b>Contas recorrentes</div><div class="stat or"><b>${S.rules.length}</b>Regras da casa</div></div>
  ${[['✏️','Editar casa'],['➕','Convidar morador'],['📖','Regras da casa'],['⚙️','Configurações']].map(([i,t])=>`<button class="menu" ${t==='Regras da casa'?'data-a="go" data-v="rules"':t==='Editar casa'?'data-a="edithn"':`data-a="toast" data-v="${t}: em breve"`}><span>${i}&nbsp; ${t}</span>›</button>`).join('')}
+ <button class='menu' data-a='go' data-v='ach'><span>🎮&nbsp; Conquistas e ranking</span>›</button><button class='menu' data-a='go' data-v='owner'><span>🔑&nbsp; Painel do proprietário</span>›</button><button class='menu' data-a='go' data-v='msgs'><span>💬&nbsp; Mural de avisos</span>›</button>
  <button class="menu" data-a="theme"><span>🌗&nbsp; Alternar tema claro/escuro</span>›</button>`;
 }
+const BK=t=>`<div class='top'><button data-a='go' data-v='house' aria-label='Voltar' style='font-size:22px'>‹</button><h1>${t}</h1></div>`;
+function ach(){
+ const me=S.xp['Você'],L=lv(me);
+ const B=[['🧹','Faxineiro','Conclua 1 tarefa',S.tk.some(t=>t.done)],['💸','Em dia','Todas as despesas pagas',S.ex.length>0&&S.ex.every(e=>e.paid)],['🛒','Chef das compras','3 itens comprados',S.li.filter(i=>i.c).length>=3],['📖','Legislador','5 regras na casa',S.rules.length>=5],['🔧','Zelador','Resolva 1 chamado',S.mt.some(m=>m.s==2)],['⭐','Veterano','Chegue a 200 XP',me>=200]];
+ const R=[...NAMES].sort((a,b)=>S.xp[b]-S.xp[a]);
+ return `${BK('Conquistas')}
+ <div class='house' style='flex-direction:column;align-items:flex-start'><b style='font-size:18px'>Nível ${L} · ${TIT[Math.min(4,L-1)]}</b><div class='prog' style='width:100%'><i style='width:${me%100}%'></i></div><small style='color:var(--mut)'>${me} XP · faltam ${100-me%100} para o nível ${L+1}</small></div>
+ <h2>Como ganhar XP</h2><small style='color:var(--mut)'>Concluir tarefa +20 · Pagar despesa +10 · Item na lista +5 · Aluguel em dia +25</small>
+ <h2>Medalhas (${B.filter(b=>b[3]).length}/${B.length})</h2><div class='kp'>${B.map(b=>`<div class='stat ${b[3]?'or':''}' style='${b[3]?'':'background:var(--sf);opacity:.55;'}min-height:100px;text-align:center;align-items:center'><span style='font-size:26px'>${b[0]}</span><span>${b[1]}</span><small style='font-weight:600;color:var(--mut)'>${b[2]}</small></div>`).join('')}</div>
+ <h2>Ranking da casa</h2>${R.map((n,i)=>`<div class='row'><b style='width:28px;font-size:16px'>${['🥇','🥈','🥉'][i]||(i+1)+'º'}</b>${n==='Você'?`<div class='av' style='background:#d9f2e3;width:36px;height:36px;font-size:19px'>🎮</div>`:av(n,36)}<div class='t'><b>${n}</b><small>Nível ${lv(S.xp[n])}</small></div><b>${S.xp[n]} XP</b></div>`).join('')}`;
+}
+function owner(){
+ const r=S.rent,ST=['Aberto','Em andamento','Resolvido'],C=['r','p','g'];
+ return `${BK('Painel do proprietário')}
+ <div class='total'><div>Aluguel de junho<b>${brl(r.v)}</b><span>Vence dia ${r.day} · ${brl(r.v/NAMES.length)} por morador</span></div><span class='chip ${r.paid?'g':'p'}'>${r.paid?'Recebido':'Pendente'}</span></div>
+ <button class='btn' data-a='rent'>${r.paid?'Desfazer recebimento':'Marcar aluguel como recebido'}</button>
+ <div class='kp'><div class='stat ok'><b>${NAMES.length}</b>Moradores</div><div class='stat bl'><b>11</b>Meses de contrato</div><div class='stat or'><b>${S.mt.filter(m=>m.s<2).length}</b>Chamados abertos</div></div>
+ <h2>Manutenção</h2>
+ ${S.mt.map((m,i)=>`<div class='row'><div class='ic or'>🔧</div><div class='t'><b>${esc(m.t)}</b><small>Aberto por ${esc(m.by)}</small></div><button class='chip ${C[m.s]}' data-a='mts' data-i='${i}' title='Toque para mudar o status'>${ST[m.s]}</button><button data-a='rmmt' data-i='${i}' aria-label='Remover chamado' style='font-size:16px'>🗑️</button></div>`).join('')||'<div class="empty">Nenhum chamado.</div>'}
+ <div class='add'><input class='in' id='min' placeholder='Descrever novo chamado...'><button data-a='addmt' aria-label='Abrir chamado'>+</button></div>
+ <h2>Comunicados rápidos</h2>
+ ${[['📅','Vistoria agendada para dia 20/06, às 14h.'],['💸','Lembrete: o aluguel vence dia 10.'],['🔧','Um técnico passará amanhã para reparos.']].map(([i,t])=>`<button class='row' data-a='qmsg' data-v='${t}'><div class='ic bl'>${i}</div><div class='t'><b>${t}</b><small>Toque para enviar ao mural</small></div></button>`).join('')}`;
+}
+function msgs(){
+ return `${BK('Mural de avisos')}
+ ${S.msgs.map(m=>{const me=m.a==='Você';return `<div style='display:flex;flex-direction:column;align-items:${me?'flex-end':'flex-start'};margin-bottom:10px'><small style='color:var(--mut);font-weight:700'>${esc(m.a)} · ${m.h}</small><div style='max-width:82%;padding:10px 12px;border-radius:16px;font-size:14px;background:${me?'var(--g)':'var(--sf)'};color:${me?'#fff':'var(--ink)'}'>${esc(m.t)}</div></div>`}).join('')}
+ <div class='add'><input class='in' id='min2' placeholder='Escreva um aviso para a casa...'><button data-a='send' aria-label='Enviar'>➤</button></div>`;
+}
 function nav(){
- const a=S.scr==='new'?'exp':S.scr==='rules'?'house':S.scr;
+ const a=S.scr==='new'?'exp':['rules','ach','owner','msgs'].includes(S.scr)?'house':S.scr;
  return `<nav>${[['home','🏠','Início'],['exp','💲','Despesas'],['tasks','✅','Tarefas'],['list','🛒','Lista'],['house','🏡','Casa']].map(([k,i,t])=>`<button class="${a===k?'on':''}" data-a="go" data-v="${k}"><span>${i}</span>${t}</button>`).join('')}</nav>`;
 }
 function sheet(){
  return `<div class="shade" data-a="closesheet"><div class="sheet"><h1 style="margin-top:12px">Nova tarefa</h1>
  <label style="margin-top:0">Título</label><input class="in" id="tt1" placeholder="Ex.: Regar as plantas">
- <label>Responsável</label><select class="in" id="tt2"><option>Você</option>${NAMES.map(x=>`<option>${x}</option>`).join('')}</select>
+ <label>Responsável</label><select class="in" id="tt2">${NAMES.map(x=>`<option>${x}</option>`).join('')}</select>
  <label>Data</label><input class="in" type="date" id="tt3" value="2024-06-10"><div style="height:16px"></div><button class="btn" data-a="savetk">Salvar tarefa</button></div></div>`;
 }
 function render(){
  const old=$('.scr');const top=old?old.scrollTop:0;
  const f=S.scr==='exp'?`<button class="fab" data-a="go" data-v="new">＋ Nova despesa</button>`:S.scr==='tasks'?`<button class="fab" data-a="newtk">＋ Nova tarefa</button>`:'';
- $('#app').innerHTML=`<div class="scr">${({home,exp,new:nw,tasks,list,house,rules})[S.scr]()}</div>${f}${nav()}${S.sheet?sheet():''}`;
+ $('#app').innerHTML=`<div class="scr">${({home,exp,new:nw,tasks,list,house,rules,ach,owner,msgs})[S.scr]()}</div>${f}${nav()}${S.sheet?sheet():''}`;
  $('.scr').scrollTop=top;
  if(S.scr==='new')updDiv();
 }
@@ -223,25 +260,36 @@ function toast(m){const t=document.createElement('div');t.className='toast';t.te
 function tkLabel(iso){const d=new Date(iso+'T00:00:00'),dm=String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
  if(iso==='2024-06-10')return 'Hoje, '+dm;if(iso==='2024-06-11')return 'Amanhã, '+dm;
  return ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'][d.getDay()]+', '+dm}
+const isAdm=()=>!!S.adm['Você'];
+const lv=x=>Math.floor(x/100)+1,TIT=['Novato','Colega de casa','Guardião da casa','Mestre da república','Lenda do lar'],hm=()=>new Date().toTimeString().slice(0,5);
+function award(n,p){const b=S.xp[n]||0;S.xp[n]=Math.max(0,b+p);if(n==='Você'){const l=lv(S.xp[n]);toast((p>0?'+':'')+p+' XP 🎮'+(l>lv(b)?' · Nível '+l+'!':''))}}
 const ACT={
- go:v=>{S.scr=v;S.sheet=false;S.editH=false;render();$('.scr').scrollTop=0},
+ go:v=>{S.scr=v;S.sheet=false;S.editH=false;S.mng=0;render();$('.scr').scrollTop=0},
  toast:v=>toast(v),
  theme:()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');r.dataset.theme=cur==='dark'?'light':'dark'},
  ef:v=>{S.ef=v;render()},tf:v=>{S.tf=v;render()},
  mo:(v,i)=>{let [y,m]=S.month.split('-').map(Number);m+=i;if(m<1){m=12;y--}if(m>12){m=1;y++}S.month=y+'-'+String(m).padStart(2,'0');render()},
- tex:(v,i)=>{S.ex[i].paid=S.ex[i].paid?0:1;render()},
- tt:(v,i)=>{const t=S.tk[i];t.done=t.done?0:1;t.late=t.done?0:t.late;render()},
+ tex:(v,i)=>{const e=S.ex[i];e.paid=e.paid?0:1;render();award(e.by,e.paid?10:-10)},
+ tt:(v,i)=>{const t=S.tk[i];t.done=t.done?0:1;t.late=t.done?0:t.late;render();award(t.o,t.done?20:-20)},
  tl:(v,i)=>{S.li[i].c=S.li[i].c?0:1;render()},
  rmli:(v,i)=>{S.li.splice(i,1);render();toast('Item removido')},
  clrli:()=>{S.li=S.li.filter(x=>!x.c);render();toast('Itens marcados removidos')},
- addrl:()=>{const el=$('#rin'),t=el.value.trim();if(!t)return toast('Digite a regra');S.rules.push(t);render();$('#rin').focus()},
- rmrl:(v,i)=>{S.rules.splice(i,1);render();toast('Regra removida')},
- edithn:()=>{S.scr='house';S.editH=true;render();const el=$('#hn');el.focus();el.select()},
+ addrl:()=>{if(!isAdm())return toast('Apenas admins podem editar as regras 🔒');const el=$('#rin'),t=el.value.trim();if(!t)return toast('Digite a regra');S.rules.push(t);render();$('#rin').focus()},
+ rmrl:(v,i)=>{if(!isAdm())return toast('Apenas admins podem editar as regras 🔒');S.rules.splice(i,1);render();toast('Regra removida')},
+ edithn:()=>{if(!isAdm())return toast('Apenas admins podem editar a casa 🔒');S.scr='house';S.editH=true;render();const el=$('#hn');el.focus();el.select()},
  savehn:()=>{const n=$('#hn').value.trim();if(!n)return toast('Digite o nome da casa');S.house=n;S.addr=$('#ha').value.trim();S.tag=$('#ht').value.trim();S.editH=false;render();toast('Casa renomeada ✓')},
  cancelhn:()=>{S.editH=false;render()},
  rmex:(v,i)=>{S.ex.splice(i,1);render();toast('Despesa removida')},
  rmtk:(v,i)=>{S.tk.splice(i,1);render();toast('Tarefa removida')},
- addli:()=>{const el=$('#lin'),t=el.value.trim();if(!t)return toast('Digite o nome do item');S.li.push({t,by:'você',c:0});render();$('#lin').focus()},
+ addli:()=>{const el=$('#lin'),t=el.value.trim();if(!t)return toast('Digite o nome do item');S.li.push({t,by:'você',c:0});render();$('#lin').focus();award('Você',5)},
+ mng:()=>{if(!isAdm())return toast('Apenas admins podem gerenciar moradores 🔒');S.mng=S.mng?0:1;render()},
+ adm:v=>{if(S.adm[v]&&Object.keys(S.adm).filter(k=>S.adm[k]).length<2)return toast('A casa precisa ter ao menos 1 admin');S.adm[v]=S.adm[v]?0:1;if(!isAdm())S.mng=0;render();toast(S.adm[v]?v+' agora é admin ✓':'Admin removido de '+v)},
+ rent:()=>{S.rent.paid=S.rent.paid?0:1;render();award('Você',S.rent.paid?25:-25)},
+ mts:(v,i)=>{S.mt[i].s=(S.mt[i].s+1)%3;render()},
+ rmmt:(v,i)=>{S.mt.splice(i,1);render()},
+ addmt:()=>{const t=$('#min').value.trim();if(!t)return toast('Descreva o problema');S.mt.unshift({t,by:'Você',s:0});render();toast('Chamado aberto ✓')},
+ qmsg:v=>{S.msgs.push({a:'Proprietário',t:v,h:hm()});toast('Enviado ao mural ✓')},
+ send:()=>{const t=$('#min2').value.trim();if(!t)return;S.msgs.push({a:'Você',t,h:hm()});render();$('.scr').scrollTop=1e5;$('#min2').focus()},
  sp:v=>{S.nx.sel[v]=S.nx.sel[v]?0:1;render()},
  saveex:()=>{
   const n=S.nx,v=parseFloat(String(n.v).replace(',','.')),c=Object.values(n.sel).filter(Boolean).length;
@@ -264,7 +312,7 @@ document.addEventListener('input',e=>{
  if(e.target.classList.contains('rl'))S.rules[+e.target.dataset.i]=e.target.value;
 });
 document.addEventListener('change',e=>{if(e.target.id==='nb')S.nx.by=e.target.value});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='lin')ACT.addli();if(e.key==='Enter'&&e.target.id==='rin')ACT.addrl();if(e.key==='Enter'&&['hn','ha','ht'].includes(e.target.id))ACT.savehn()});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='lin')ACT.addli();if(e.key==='Enter'&&e.target.id==='rin')ACT.addrl();if(e.key==='Enter'&&['hn','ha','ht'].includes(e.target.id))ACT.savehn();if(e.key==='Enter'&&e.target.id==='min')ACT.addmt();if(e.key==='Enter'&&e.target.id==='min2')ACT.send()});
 render();
 </script>
 </body>
