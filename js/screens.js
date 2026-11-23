@@ -116,10 +116,14 @@ function msgs(){
  ${S.msgs.map(m=>{const me=m.a==='Você';return `<div style='display:flex;flex-direction:column;align-items:${me?'flex-end':'flex-start'};margin-bottom:10px'><small style='color:var(--mut);font-weight:700'>${esc(m.a)} · ${m.h}</small><div style='max-width:82%;padding:10px 12px;border-radius:16px;font-size:14px;background:${me?'var(--g)':'var(--sf)'};color:${me?'#fff':'var(--ink)'}'>${esc(m.t)}</div></div>`}).join('')}
  <div class='add'><input class='in' id='min2' placeholder='Escreva um aviso para a casa...'><button data-a='send' aria-label='Enviar'>➤</button></div>`;
 }
-/** Barra inferior: 5 abas; subtelas mantêm a aba Casa (ou Despesas) destacada. */
+/** Navegação: barra inferior flutuante (celular/tablet) ou menu lateral com marca e atalhos (computador, via CSS). */
 function nav(){
- const a=S.scr==='new'?'exp':['rules','ach','owner','msgs'].includes(S.scr)?'house':S.scr;
- return `<nav>${[['home','🏠','Início'],['exp','💲','Despesas'],['tasks','✅','Tarefas'],['list','🛒','Lista'],['house','🏡','Casa']].map(([k,i,t])=>`<button class="${a===k?'on':''}" data-a="go" data-v="${k}"><span>${i}</span>${t}</button>`).join('')}</nav>`;
+ const subs=['rules','ach','owner','msgs'],a=S.scr==='new'?'exp':subs.includes(S.scr)?'house':S.scr;
+ // Abas principais (classe 'sub' no Casa quando a tela aberta é uma subtela; usada só no menu lateral)
+ const tab=([k,i,t])=>`<button class="${a===k?'on':''}${a===k&&subs.includes(S.scr)?' sub':''}" data-a="go" data-v="${k}"><span>${i}</span>${t}</button>`;
+ // Atalhos extras (.xt): aparecem só no menu lateral do computador
+ const ext=([k,i,t])=>`<button class="xt${S.scr===k?' on':''}" data-a="go" data-v="${k}"><span>${i}</span>${t}</button>`;
+ return `<nav><div class="brand">🏡 Roomie<small>${esc(S.house)}</small></div>${[['home','🏠','Início'],['exp','💲','Despesas'],['tasks','✅','Tarefas'],['list','🛒','Lista'],['house','🏡','Casa']].map(tab).join('')}<div class="sep">Mais</div>${[['msgs','💬','Mural de avisos'],['owner','🔑','Proprietário'],['ach','🎮','Conquistas'],['rules','📖','Regras da casa']].map(ext).join('')}</nav>`;
 }
 /** Painel (bottom sheet) para criar tarefa: título, responsável e data. */
 function sheet(){

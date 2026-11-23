@@ -22,19 +22,19 @@ body{background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,-apple-s
 .isl,.sb,.hb,.bt{display:none;position:absolute}
 .bt{left:-9px;width:4px;border-radius:2px 0 0 2px;background:linear-gradient(90deg,#6e6c68,#b9b6af)}
 .bt.r{left:auto;right:-9px;border-radius:0 2px 2px 0;background:linear-gradient(90deg,#b9b6af,#6e6c68)}
-/* Desktop (>= 520px): desenha a moldura estilo iPhone; abaixo disso o app ocupa a tela toda */
+/* Moldura de iPhone: só aparece no modo celular (body.phone, botão do cabeçalho) e a partir de 520px */
 @media(min-width:520px){
-.dev{width:430px;height:min(900px,calc(100% - 28px));padding:11px;background:#050505;border-radius:64px;box-shadow:0 0 0 2px #c4c1ba,0 0 0 4px #77746f,0 0 0 5px #2a2a28,0 30px 60px rgba(0,0,0,.35)}
-.dev #app{border-radius:53px}
-.dev .isl{display:block;top:22px;left:50%;width:120px;height:35px;margin-left:-60px;background:#000;border-radius:20px;z-index:20}
-.dev .sb{display:flex;top:22px;left:42px;right:42px;height:35px;align-items:center;justify-content:space-between;font-size:15px;font-weight:800;z-index:10;pointer-events:none;color:var(--ink)}
-.dev .sb span{display:flex;gap:6px;align-items:center;font-size:12px}
-.dev .hb{display:block;bottom:20px;left:50%;width:140px;height:5px;margin-left:-70px;border-radius:3px;background:var(--ink);opacity:.85;z-index:10;pointer-events:none}
-.dev .bt{display:block}
-.dev .scr{padding:64px 16px 120px}
-.dev nav{bottom:30px}
-.dev .fab{bottom:112px}
-.dev .toast{bottom:118px}
+body.phone .dev{width:430px;height:min(900px,calc(100% - 28px));padding:11px;background:#050505;border-radius:64px;box-shadow:0 0 0 2px #c4c1ba,0 0 0 4px #77746f,0 0 0 5px #2a2a28,0 30px 60px rgba(0,0,0,.35)}
+body.phone .dev #app{border-radius:53px}
+body.phone .dev .isl{display:block;top:22px;left:50%;width:120px;height:35px;margin-left:-60px;background:#000;border-radius:20px;z-index:20}
+body.phone .dev .sb{display:flex;top:22px;left:42px;right:42px;height:35px;align-items:center;justify-content:space-between;font-size:15px;font-weight:800;z-index:10;pointer-events:none;color:var(--ink)}
+body.phone .dev .sb span{display:flex;gap:6px;align-items:center;font-size:12px}
+body.phone .dev .hb{display:block;bottom:20px;left:50%;width:140px;height:5px;margin-left:-70px;border-radius:3px;background:var(--ink);opacity:.85;z-index:10;pointer-events:none}
+body.phone .dev .bt{display:block}
+body.phone .dev .scr{padding:64px 16px 120px}
+body.phone .dev nav{bottom:30px}
+body.phone .dev .fab{bottom:112px}
+body.phone .dev .toast{bottom:118px}
 }
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--g);outline-offset:2px}
@@ -110,3 +110,49 @@ label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}
 .ed>small,.ed>br{display:none}
 .empty{text-align:center;color:var(--mut);padding:30px 10px;font-size:14px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* =====================================================================
+   6. LAYOUTS RESPONSIVOS (sem moldura de celular)
+   Celular (< 520px): tela cheia | Tablet (520-899px): coluna central de 640px
+   Computador (>= 900px): menu lateral + área de conteúdo
+   .tg = botão do cabeçalho que liga o modo celular (body.phone)
+   ===================================================================== */
+.brand,.xt,.sep,.mt{display:none}
+.tg{display:none;margin-top:6px;background:var(--gl);color:var(--g);font-weight:800;font-size:12px;border-radius:99px;padding:6px 14px}
+.tg .b,body.phone .tg .a{display:none}
+body.phone .tg .b{display:inline}
+@media(min-width:520px){
+.tg{display:inline-flex}
+body:not(.phone) .scr{padding-left:max(16px,calc(50% - 320px));padding-right:max(16px,calc(50% - 320px))}
+body:not(.phone) nav{left:max(16px,calc(50% - 320px));right:max(16px,calc(50% - 320px))}
+}
+@media(min-width:900px){
+body:not(.phone) .site{display:flex;align-items:center;gap:14px;text-align:left;padding:10px 24px;background:var(--card);border-bottom:1px solid var(--ln)}
+body:not(.phone) .site h1{font-size:18px}
+body:not(.phone) .site p{margin:0}
+body:not(.phone) .mt{display:inline-grid;place-items:center;flex:none;width:36px;height:36px;border-radius:10px;background:var(--sf);font-size:18px}
+body.nonav:not(.phone) nav{display:none}
+body:not(.phone) .tg{margin:0 0 0 auto}
+body:not(.phone) .stage{display:block}
+body:not(.phone) #app{flex-direction:row;background:var(--bg)}
+body:not(.phone) nav{order:-1;position:static;flex:none;width:236px;flex-direction:column;gap:4px;padding:18px 12px;border-radius:0;border:0;border-right:1px solid var(--ln);background:var(--card);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;overflow-y:auto}
+body:not(.phone) nav button{flex:none;flex-direction:row;justify-content:flex-start;gap:12px;font-size:14px;padding:11px 14px;border-radius:12px}
+body:not(.phone) nav button span{font-size:18px}
+body:not(.phone) nav button:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+body:not(.phone) nav button.on{background:color-mix(in srgb,var(--g) 88%,transparent)}
+body:not(.phone) nav button.on.sub{background:none;box-shadow:none;font-weight:600;color:color-mix(in srgb,var(--ink) 65%,transparent)}
+body:not(.phone) nav button.on.sub span{filter:grayscale(1);opacity:.75}
+body:not(.phone) .brand{display:block;font-size:22px;font-weight:800;color:var(--g);padding:4px 14px 14px}
+body:not(.phone) .brand small{display:block;font-size:12px;font-weight:600;color:var(--mut)}
+body:not(.phone) .sep{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding:16px 14px 4px}
+body:not(.phone) .xt{display:flex}
+body:not(.phone) .scr{padding:28px clamp(24px,4vw,64px) 96px}
+/* .scr vira coluna centralizada: todo filho (título, texto, campo, botão) fica com a mesma largura e alinhamento */
+body:not(.phone) .scr{display:flex;flex-direction:column;align-items:center}
+body:not(.phone) .scr>*{flex:none;width:100%;max-width:920px}
+body:not(.phone) .scr::-webkit-scrollbar-track{margin:0}
+body:not(.phone) .fab{bottom:32px;right:40px}
+body:not(.phone) .toast{bottom:32px}
+body:not(.phone) .shade{align-items:center;justify-content:center}
+body:not(.phone) .sheet{max-width:440px;border-radius:22px;padding:8px 24px 24px}
+}

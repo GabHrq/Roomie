@@ -134,7 +134,7 @@ Fora do estado: `P` (moradores: nome → cor e emoji), `NAMES` (chaves de `P`) e
 |---|---|
 | `home`, `exp`, `nw`, `tasks`, `list`, `rules`, `house`, `ach`, `owner`, `msgs` | uma função por tela; devolvem HTML |
 | `BK(titulo)` | cabeçalho com botão voltar das subtelas |
-| `nav()` | barra inferior flutuante |
+| `nav()` | barra inferior flutuante (celular/tablet) ou menu lateral com atalhos (computador) |
 | `sheet()` | painel de nova tarefa |
 | `render()` | redesenha `#app`, escolhe a tela por `S.scr`, o botão flutuante e preserva a rolagem |
 | `updDiv()` | atualiza só o cartão de divisão (evita re-render a cada tecla) |
@@ -149,7 +149,7 @@ Ações do objeto `ACT` (assinatura `(valor, índice)`):
 | Ação | O que faz |
 |---|---|
 | `go(v)` | troca de tela e fecha painéis e modos de edição |
-| `toast(v)`, `theme()` | mostra aviso; alterna tema claro/escuro |
+| `toast(v)`, `theme()`, `phone()`, `menu()` | mostra aviso; alterna tema claro/escuro; liga/desliga o modo celular (moldura); oculta/mostra o menu lateral |
 | `ef(v)`, `tf(v)`, `mo(_, ±1)` | filtro de despesas, filtro de tarefas, mês anterior/próximo |
 | `tex(_, i)` | alterna despesa paga/pendente (±10 XP) |
 | `tt(_, i)` | conclui/reabre tarefa (±20 XP) |
@@ -178,7 +178,20 @@ Ações do objeto `ACT` (assinatura `(valor, índice)`):
 3. **Base**: reset, `body` e `#app`; `.scr` é a área rolável com barra de rolagem fina.
 4. **Componentes**: `.row` (linha de lista), `.stat` (indicador), `.chip` (etiqueta de status), `.task`, `.li`, `.btn`, `.in` (campo), `.seg` (abas), `.fab`, `.toast`, `.shade`/`.sheet`.
 5. **Navegação**: `nav` flutuante em cápsula translúcida (liquid glass), aba ativa em `button.on`.
-6. **Moldura do celular**: `.site` (cabeçalho da página), `.stage`, `.dev` e os elementos `.isl`, `.sb`, `.hb`, `.bt`. Em telas com 520 px ou mais desenha a moldura estilo iPhone; abaixo disso o app ocupa a tela toda.
+6. **Layouts responsivos** (seção 6 do arquivo): veja abaixo.
+7. **Moldura do celular**: `.site` (cabeçalho), `.stage`, `.dev` e `.isl`, `.sb`, `.hb`, `.bt`. Só aparece com `body.phone` (botão do cabeçalho) e a partir de 520 px.
+
+## Layouts responsivos
+
+O mesmo HTML se adapta por CSS, sem duplicar telas:
+
+| Largura | Layout |
+|---|---|
+| menos de 520 px (celular) | tela cheia, barra inferior flutuante |
+| 520 a 899 px (tablet) | coluna central de 640 px, barra inferior flutuante |
+| 900 px ou mais (computador) | menu lateral fixo (marca, 5 abas e atalhos para Mural, Proprietário, Conquistas e Regras), conteúdo centralizado com largura máxima de 920 px, botão de ação no canto, painel de tarefa como janela central |
+
+No computador não há moldura de iPhone, o menu lateral fica à esquerda e a área `.scr` vira uma coluna flex centralizada (todo filho com largura 100% e máximo de 920 px), o que mantém títulos, textos, campos e botões alinhados. O botão **Ver como celular** (cabeçalho, a partir de 520 px) liga o modo celular, que mostra a moldura com ilha, barra de status e botões, útil para demonstrar a interface mobile. Ele alterna a classe `phone` no `body` (`ACT.phone`). O botão **☰** do cabeçalho oculta ou mostra o menu lateral (`ACT.menu`, classe `nonav` no `body`) e o conteúdo ocupa a tela toda. Os atalhos extras do menu lateral (`.xt`) e a marca (`.brand`) existem no HTML da navegação, mas ficam ocultos no celular.
 
 ## Como estender
 

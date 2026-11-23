@@ -11,6 +11,10 @@ const ACT={
 // Navegação: troca de tela (fecha painéis e modos de edição)
  go:v=>{S.scr=v;S.sheet=false;S.editH=false;S.mng=0;render();$('.scr').scrollTop=0},
  toast:v=>toast(v),
+// Modo celular: liga/desliga a moldura de iPhone (só faz efeito em telas >= 520px)
+ phone:()=>document.body.classList.toggle('phone'),
+// Menu lateral (computador): oculta/mostra com o botão ☰ do cabeçalho
+ menu:()=>document.body.classList.toggle('nonav'),
 // Alterna tema claro/escuro lendo o atributo data-theme (ou o tema do aparelho)
  theme:()=>{const r=document.documentElement,cur=r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');r.dataset.theme=cur==='dark'?'light':'dark'},
 // Filtros e navegação de mês
